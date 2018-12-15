@@ -1,15 +1,6 @@
 import { connectRouter } from "connected-react-router";
 import { combineReducers } from "redux";
 import { 
-    RECEIVE_USER, 
-    RECEIVE_FIELD_USAGE, 
-    RECEIVE_LOGIN_STATUS, 
-    LOAD_SESSION_STATE,
-    LOGOUT_USER,
-    RECEIVE_BLOG,
-    POST_SUBMITTED
-} from "../actions";
-import { 
     RECEIVE_READING_POSTS, 
     RECEIVE_POST, 
     RECEIVE_COMMENTS_FOR_POST,
@@ -19,7 +10,14 @@ import {
     RECEIVE_SEARCH,
     CHANGE_POST_MODE,
     DELETE_POST,
-    RECEIVE_TOKEN
+    RECEIVE_TOKEN,
+    RECEIVE_USER, 
+    RECEIVE_FIELD_USAGE, 
+    RECEIVE_LOGIN_STATUS, 
+    LOAD_SESSION_STATE,
+    LOGOUT_USER,
+    RECEIVE_BLOG,
+    POST_SUBMITTED
 } from "../actions/types";
 
 export default function createRootReducer(history) {
@@ -41,7 +39,7 @@ export default function createRootReducer(history) {
     return connectRouter(history)(reducer)
 }
 
-const INITIAL_SESSION_STATE = () => ({user: {id: 0}, state: {state: "Not Requested"}})
+const INITIAL_SESSION_STATE = () => ({user: {id: 0}, state: {state: "Not Requested"}, loaded: false})
 
 const session = (state = INITIAL_SESSION_STATE(), action) => {
     let next = Object.assign({}, state)
@@ -65,8 +63,10 @@ const session = (state = INITIAL_SESSION_STATE(), action) => {
             if (savedUser) {
                 next.user = savedUser
             }
+            next.loaded = true
             return next
         case RECEIVE_TOKEN:
+            
             next.state.token = action.token
             return next
         case LOGOUT_USER:
@@ -146,6 +146,7 @@ const comments = (state = {}, action) => {
             return next
         case DELETE_POST:
             next[action.id] = undefined
+            return next
         default:
             return state
     }

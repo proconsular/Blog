@@ -3,19 +3,20 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import PasswordForm from '../components/PasswordForm';
-import { submitPasswordChange } from '../actions/util';
+import Login from '../../components/forms/Login'
+import { requestLogin } from '../../actions/auth';
 
 const mapToState = state => ({
+    status: state.session.state,
     user: state.session.user
 })
 
 const mapToDispatch = dispatch => ({
-    submit: (data, callback) => dispatch(submitPasswordChange(data, callback))
+    login: (email, password) => dispatch(requestLogin(email, password))
 })
 
 const container = props => (
-    <PasswordForm {...props} />
+    <Login {...props} />
 )
 
 export default withRouter(connect(mapToState, mapToDispatch)(container))

@@ -29,6 +29,27 @@ const getNewToken = (req, res) => {
     }
 }
 
+const verify = async (req, res) => {
+    try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token']
+        if (token) {
+            let status = await Status.findOne({where: {token: token}})
+            if (status.state == "LOGGED_IN") {
+                jwt.verify(token, config.secret, (err, decoded) => {
+                    res.json({valid: !err})
+                })
+            } else {
+                throw {}
+            }
+        } else {
+            throw {}
+        }
+    } catch (err) {
+        res.json({valid: false})
+    }
+}
+
 module.exports = ({
-    getNewToken
+    getNewToken,
+    verify
 })

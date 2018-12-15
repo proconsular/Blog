@@ -1,6 +1,6 @@
 import React from 'react'
-import UserInfo from '../containers/UserInfo';
-import PasswordForm from '../containers/PasswordForm';
+import UserInfo from '../containers/content/UserInfo';
+import PasswordForm from '../containers/forms/PasswordForm';
 
 export default class Profile extends React.Component {
     render() {

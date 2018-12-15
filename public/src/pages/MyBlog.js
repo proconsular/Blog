@@ -1,6 +1,6 @@
 import React from 'react'
-import PostForm from '../containers/PostForm';
-import Blog from '../containers/Blog'
+import PostForm from '../containers/forms/PostForm';
+import Blog from '../containers/parts/Blog'
 
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'

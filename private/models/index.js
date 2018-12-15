@@ -6,9 +6,18 @@ const mysql = new Sequelize('Blog', 'root', 'root', {
 })
 
 const User = mysql.define('user', {
-    username: Sequelize.STRING,
-    email: Sequelize.STRING,
-    password: Sequelize.STRING
+    username: {type: Sequelize.STRING, validate: {
+        is: /^[a-zA-Z0-9_]{3,}$/i,
+        notEmpty: true
+    }},
+    email: {type: Sequelize.STRING, validate: {
+        isEmail: true,
+        notEmpty: true,
+    }},
+    password: {type: Sequelize.STRING, validate: {
+        min: 4,
+        notEmpty: true,
+    }}
 })
 
 const Status = mysql.define('status', {
@@ -18,20 +27,29 @@ const Status = mysql.define('status', {
 })
 
 const Post = mysql.define('post', {
-    title: Sequelize.STRING,
-    content: Sequelize.TEXT,
+    title: {type: Sequelize.STRING, validate: {
+        min: 3
+    }},
+    content: {type: Sequelize.TEXT, validate: {
+        notEmpty: true,
+    }},
 })
 
 const Rating = mysql.define('rating', {
-    value: Sequelize.INTEGER
+    value: {type: Sequelize.INTEGER, defaultValue: 0, validate: {
+    }}
 })
 
 const Comment = mysql.define('comment', {
-    content: Sequelize.TEXT
+    content: {type: Sequelize.TEXT, validate: {
+        notEmpty: true,
+    }}
 })
 
 const Tag = mysql.define('tag', {
-    name: Sequelize.STRING
+    name: {type: Sequelize.STRING, validate: {
+        notEmpty: true,
+    }}
 })
 
 Status.belongsTo(User)

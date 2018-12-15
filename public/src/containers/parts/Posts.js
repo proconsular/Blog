@@ -3,20 +3,19 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Login from '../components/Login'
-import { requestLogin } from '../actions';
+import { requestReadingPosts } from '../../actions/site';
+import Posts from '../../components/parts/Posts';
 
 const mapToState = state => ({
-    status: state.session.state,
-    user: state.session.user
+    posts: state.reading
 })
 
 const mapToDispatch = dispatch => ({
-    login: (email, password) => dispatch(requestLogin(email, password))
+    request: () => dispatch(requestReadingPosts())
 })
 
 const container = props => (
-    <Login {...props} />
+    <Posts {...props} />
 )
 
 export default withRouter(connect(mapToState, mapToDispatch)(container))

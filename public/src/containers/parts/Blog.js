@@ -3,19 +3,19 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { requestReadingPosts } from '../actions/util';
-import Posts from '../components/Posts';
+import Blog from '../../components/parts/Blog';
+import { requestBlog } from '../../actions/site';
 
 const mapToState = state => ({
-    posts: state.reading
+    posts: state.blog.posts
 })
 
 const mapToDispatch = dispatch => ({
-    request: () => dispatch(requestReadingPosts())
+    request: userId => dispatch(requestBlog(userId))
 })
 
 const container = props => (
-    <Posts {...props} />
+    <Blog {...props} />
 )
 
 export default withRouter(connect(mapToState, mapToDispatch)(container))

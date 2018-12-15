@@ -3,8 +3,8 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Register from '../components/Register'
-import { registerUser, requestFieldUsage, requestLogin } from '../actions'
+import Register from '../../components/forms/Register'
+import { registerUser, requestFieldUsage, requestLogin } from '../../actions/auth'
 
 const mapToState = state => ({
     user: state.session.user,

@@ -1,32 +1,58 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Authenication from '../pages/Auth';
-import Front from '../pages/Front';
-import { loadSessionState } from '../actions';
+import { loadSessionState } from '../actions/data';
 import Main from '../pages/Main';
-import { updateToken } from '../actions/util';
+import { updateToken, verifyToken } from '../actions/tokens';
 
 class Director extends React.Component {
+    requested = false
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            loaded: false,
+        }
+    }
+
     componentWillMount() {
-        this.props.loadSession()
-        this.props.update(this.props.session.state.refresh_token)
+        this.props.loadSession() 
     }
 
     render() {
-        let page = <Authenication />
-        if (this.props.session.state.state === "LOGGED_IN") {
-            page = <Main />
+        if (this.props.session.loaded && !this.state.loaded && !this.requested) {
+            this.requested = true
+            if (this.props.session.user.id === 0) {
+                this.setState({loaded: true})
+            } else {
+                this.props.update(this.props.session.state.refresh_token, () => {
+                    this.setState({loaded: true})
+                })
+            }
         }
-        return (
-            <div className="page">
-                {page}
-            </div>
-        )
+        if (true) {
+            let page = <Authenication />
+            if (this.props.session.state.state === "LOGGED_IN") {
+                page = <Main />
+            }
+            return (
+                <div className="page">
+                    {page}
+                </div>
+            )
+        } else {
+            return <LoadingPlaceholder />
+        }
     }
 }
+
+const LoadingPlaceholder = props => (
+    <div className='loading'>
+        <img src={require('../resources/img/loader.gif')} alt='Loading...' />
+    </div>
+)
 
 const mapToState = state => ({
     session: state.session
@@ -34,7 +60,8 @@ const mapToState = state => ({
 
 const mapToDispatch = dispatch => ({
     loadSession: () => dispatch(loadSessionState()),
-    update: refresh => dispatch(updateToken(refresh))
+    update: (refresh, callback) => dispatch(updateToken(refresh, callback)),
+    verify: (token, callback) => dispatch(verifyToken(token, callback))
 })
 
 const container = props => (

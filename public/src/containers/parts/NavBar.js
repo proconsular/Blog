@@ -3,19 +3,19 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Search from '../components/Search';
-import { requestSearch } from '../actions/util';
+import NavBar from '../../components/parts/NavBar';
+import { requestLogout } from '../../actions/auth';
 
 const mapToState = state => ({
-    results: state.search
+    user: state.session.user
 })
 
 const mapToDispatch = dispatch => ({
-    request: phrase => dispatch(requestSearch(phrase))
+    logout: email => dispatch(requestLogout(email))
 })
 
 const container = props => (
-    <Search {...props} />
+    <NavBar {...props} />
 )
 
 export default withRouter(connect(mapToState, mapToDispatch)(container))

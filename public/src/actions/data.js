@@ -8,7 +8,14 @@ import {
     RECEIVE_SEARCH,
     CHANGE_POST_MODE,
     DELETE_POST,
-    RECEIVE_TOKEN
+    RECEIVE_TOKEN,
+    POST_SUBMITTED,
+    RECEIVE_BLOG,
+    RECEIVE_USER,
+    RECEIVE_FIELD_USAGE,
+    RECEIVE_LOGIN_STATUS,
+    LOAD_SESSION_STATE,
+    LOGOUT_USER
 } from "./types";
 
 export const receiveReadingPosts = posts => ({
@@ -60,4 +67,39 @@ export const removePost = id => ({
 export const receiveToken = token => ({
     type: RECEIVE_TOKEN,
     token: token
+})
+
+export const signalPostSubmitted = signal => ({
+    type: POST_SUBMITTED,
+    signal: signal
+})
+
+export const receiveBlog = (id, posts) => ({
+    type: RECEIVE_BLOG,
+    id: id,
+    posts: posts
+})
+
+export const receiveUser = data => ({
+    type: RECEIVE_USER,
+    user: data
+})
+
+export const receive_field_usage = (field, usage) => ({
+    type: RECEIVE_FIELD_USAGE,
+    field: field,
+    usage: usage
+})
+
+export const receiveLoginStatus = data => ({
+    type: RECEIVE_LOGIN_STATUS,
+    data: data
+})
+
+export const loadSessionState = () => ({
+    type: LOAD_SESSION_STATE,
+})
+
+export const logoutUser = () => ({
+    type: LOGOUT_USER
 })

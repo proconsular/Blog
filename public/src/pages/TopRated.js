@@ -2,8 +2,8 @@ import React from 'react'
 
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { requestTopPosts } from '../actions/util';
-import Post from '../containers/Post';
+import { requestTopPosts } from '../actions/site';
+import Post from '../containers/content/Post';
 
 class TopRated extends React.Component {
     componentWillMount() {

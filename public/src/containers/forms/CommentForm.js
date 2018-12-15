@@ -3,9 +3,9 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import CommentForm from '../components/CommentForm';
-import { submitComment, requestComments } from '../actions/util';
-import { signalCommentSubmitted } from '../actions/data';
+import CommentForm from '../../components/forms/CommentForm';
+import { submitComment, requestComments } from '../../actions/content/comments';
+import { signalCommentSubmitted } from '../../actions/data';
 
 const mapToState = state => ({
     user: state.session.user,

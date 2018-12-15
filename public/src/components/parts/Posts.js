@@ -1,6 +1,5 @@
 import React from 'react'
-import Post from '../containers/Post'
-import { requestReadingPosts } from '../actions/util';
+import Post from '../../containers/content/Post'
 
 export default class Posts extends React.Component {
     componentWillMount() {

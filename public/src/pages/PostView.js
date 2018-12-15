@@ -2,9 +2,9 @@ import React from 'react'
 
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Post from '../containers/Post';
-import { requestPost } from '../actions/util';
-import PostEditForm from '../containers/PostEditForm';
+import Post from '../containers/content/Post';
+import { requestPost } from '../actions/content/posts';
+import PostEditForm from '../containers/forms/PostEditForm';
 
 class PostView extends React.Component {
     componentWillMount() {

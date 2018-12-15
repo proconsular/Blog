@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../containers/NavBar';
+import NavBar from '../containers/parts/NavBar';
 
 export default class Frame extends React.Component {
     render() {

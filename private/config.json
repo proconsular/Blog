@@ -2,6 +2,6 @@
     "secret": "fwe9009je",
     "refreshTokenSecret": "fw9e0jiojs",
     "port": 8000,
-    "tokenLife": 9000,
+    "tokenLife": 3000,
     "refreshTokenLife": 86400
 }

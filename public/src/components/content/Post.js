@@ -1,10 +1,9 @@
 import React from 'react'
-import Tag from './Tag';
 
 import { Link } from 'react-router-dom'
 
-import CommentForm from '../containers/CommentForm';
-import Comment from '../components/Comment'
+import CommentForm from '../../containers/forms/CommentForm';
+import Comment from './Comment'
 
 export default class Post extends React.Component {
     constructor(props) {
@@ -72,7 +71,7 @@ export default class Post extends React.Component {
             data = this.props.posts[this.props.id]
         }
         let comments = <div></div>
-        if (this.props.comments[this.props.id]) {
+        if (this.props.comments[this.props.id] && typeof(this.props.comments[this.props.id]) === Array) {
             comments = this.props.comments[this.props.id].map(comment => {
                 return <Comment key={comment.id} {...comment} />
             })

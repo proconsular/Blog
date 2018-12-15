@@ -63,10 +63,10 @@ export default class PasswordForm extends React.Component {
             }
         }
 
-        if (this.state.current_password == 0) {
+        if (this.state.current_password === 0) {
             valid = false
         }
-        if (this.state.password.length == 0) {
+        if (this.state.password.length === 0) {
             valid = false
         }
         if (messages.length > 0) {

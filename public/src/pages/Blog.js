@@ -1,9 +1,9 @@
 import React from 'react'
-import Post from '../containers/Post';
+import Post from '../containers/content/Post';
 
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { requestBlog } from '../actions';
+import { requestBlog } from '../actions/site';
 
 class Blog extends React.Component {
     componentWillMount() {

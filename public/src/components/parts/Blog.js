@@ -1,5 +1,5 @@
 import React from 'react'
-import Post from '../containers/Post';
+import Post from '../../containers/content/Post';
 
 export default class Blog extends React.Component {
     componentWillMount() {

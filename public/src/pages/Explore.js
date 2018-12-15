@@ -1,5 +1,5 @@
 import React from 'react'
-import Search from '../containers/Search';
+import Search from '../containers/parts/Search';
 
 export default class Explore extends React.Component {
     render() {

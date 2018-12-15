@@ -1,4 +1,5 @@
-import { AUTH_ACTION } from "../actions";
+import { AUTH_ACTION } from "../actions/types";
+
 
 export default store => next => action => {
     if (action.type && action.type === AUTH_ACTION) {

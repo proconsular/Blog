@@ -3,9 +3,9 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import PostEditForm from '../components/PostEditForm';
-import { updatePost } from '../actions/util';
-import { changePostMode } from '../actions/data';
+import PostEditForm from '../../components/forms/PostEditForm';
+import { updatePost } from '../../actions/content/posts';
+import { changePostMode } from '../../actions/data';
 
 const mapToState = state => ({
     

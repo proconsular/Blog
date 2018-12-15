@@ -3,9 +3,10 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import PostForm from '../components/PostForm';
-import { submitPost, signalPostSubmitted } from '../actions';
-import { submitRating } from '../actions/util';
+import PostForm from '../../components/forms/PostForm';
+import { submitPost } from '../../actions/content/posts';
+import { signalPostSubmitted } from '../../actions/data'
+import { submitRating } from '../../actions/content/ratings';
 
 const mapToState = state => ({
     signal: state.signals.posted,

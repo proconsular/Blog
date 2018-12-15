@@ -3,9 +3,12 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Post from '../components/Post';
-import { requestPost, requestComments, submitRating, requestRatingOfPost, deletePost, requestReadingPosts } from '../actions/util';
-import { changePostMode } from '../actions/data';
+import Post from '../../components/content/Post';
+import { requestReadingPosts } from '../../actions/site';
+import { submitRating, requestRatingOfPost } from '../../actions/content/ratings'
+import { requestPost, deletePost } from '../../actions/content/posts'
+import { requestComments } from '../../actions/content/comments'
+import { changePostMode } from '../../actions/data';
 
 const mapToState = state => ({
     posts: state.posts,
