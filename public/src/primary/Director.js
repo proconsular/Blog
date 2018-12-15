@@ -32,7 +32,7 @@ class Director extends React.Component {
                 })
             }
         }
-        if (true) {
+        if (this.state.loaded) {
             let page = <Authenication />
             if (this.props.session.state.state === "LOGGED_IN") {
                 page = <Main />
